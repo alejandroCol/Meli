@@ -88,6 +88,7 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava2/2.9.0/180ad7353dbf0480cabc215948b5a234e3692f0a/adapter-rxjava2-2.9.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.9.0/fc93484fc67ab52b1e0ccbdaa3922d8a6678e097/converter-gson-2.9.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.9.0/d8fdfbd5da952141a665a403348b74538efc05ff/retrofit-2.9.0.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/bab2622feea6abc9141b8c868d9570e3/transformed/picasso-2.71828-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.9.1/51215279c3fe472c59b6b7dd7491e6ac2e28a81b/okhttp-4.9.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/6d73871e4dfe625ce9896bb474b913fc/transformed/core-splashscreen-1.0.0-rc01-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.7.10/1ef73fee66f45d52c67e2aca12fd945dbe0659bf/kotlin-stdlib-jdk7-1.7.10.jar</arg>
@@ -107,6 +108,9 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d9da620bda7c6bc5432b485d624c5ec4/transformed/dagger-lint-aar-2.42-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/a14e3f5488dfbcc0b15ba8a3d6d6dd88/transformed/lottie-4.2.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/758e6c5f1592ad0be70c4cfcb3f237f6/transformed/exifinterface-27.1.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/27.1.0/39ded76b5e1ce1c5b2688e1d25cdc20ecee32007/support-annotations-27.1.0.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/platforms/android-33/android.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
@@ -194,6 +198,7 @@
     <orderEntry type="library" name="Gradle: com.google.dagger:hilt-core:2.42" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:logging-interceptor:4.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: androidx.databinding:viewbinding:7.2.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.core:core-ktx:1.8.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.core:core:1.8.0@aar" level="project" />
@@ -241,5 +246,8 @@
     <orderEntry type="library" name="Gradle: androidx.activity:activity-ktx:1.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime-ktx:2.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.savedstate:savedstate-ktx:1.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.airbnb.android:lottie:4.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.picasso:picasso:2.71828@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:exifinterface:27.1.0@aar" level="project" />
   </component>
 </module>

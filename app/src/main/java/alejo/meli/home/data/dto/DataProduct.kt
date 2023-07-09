@@ -6,5 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class DataProduct(
     @Json(name = "title") val title: String,
-    @Json(name = "thumbnail") val thumbnail: String
+    @Json(name = "thumbnail") val thumbnail: String,
+    @Json(name = "price") val price: String
+
 )

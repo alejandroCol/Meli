@@ -12,5 +12,5 @@ sealed interface HomeViewState {
 }
 
 sealed interface HomeNavigation {
-    data class Detail(val cityName: String) : HomeNavigation
+    data class Detail(val product: Product) : HomeNavigation
 }

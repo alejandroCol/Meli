@@ -14,11 +14,13 @@ fun ResponseSearch.toDto(): DataResponseSearch = DataResponseSearch(
 )
 
 fun DataProduct.toDomainEntity(): Product = Product(
+    title,
     thumbnail,
-    title
+    price
 )
 
 fun Product.toDto(): DataProduct = DataProduct(
+    title,
     thumbnail,
-    title
+    price
 )

@@ -7,34 +7,34 @@ import alejo.meli.home.presentation.listener.ProductListener
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getProductsSearched: GetProductsSearchedUseCase,
+    private val getProductsSearched: GetProductsSearchedUseCase
 ) : BaseViewModel<HomeViewState, HomeNavigation>(), ProductListener {
 
-    var emptyList = true
-
     fun searchProducts(search: String) {
-        if (emptyList) setState(HomeViewState.Loading)
+        setState(HomeViewState.Loading)
         viewModelScope.launch {
             try {
                 val products = getProductsSearched(search)
-                products?.let {
-                    if (it.isNotEmpty()) {
-                        emptyList = false
-                        setState(HomeViewState.Content(it))
-                    } else setEmpty()
-                } ?: setEmpty()
-            } catch (throwable: Throwable) {
+                handleProductsResponse(products)
+            } catch (throwable: IOException) {
                 setState(HomeViewState.Error)
             }
         }
     }
 
+    private fun handleProductsResponse(products: List<Product>?) {
+        when {
+            products != null && products.isNotEmpty() -> setState(HomeViewState.Content(products))
+            else -> setEmpty()
+        }
+    }
+
     private fun setEmpty() {
-        emptyList = true
         setState(HomeViewState.Empty)
     }
 
@@ -47,6 +47,6 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun onProductClicked(product: Product) {
-        navigateTo(HomeNavigation.Detail(product.title))
+        navigateTo(HomeNavigation.Detail(product))
     }
 }

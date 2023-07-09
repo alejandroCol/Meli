@@ -66,14 +66,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <ProgressBar
-        android:id="@+id/pb_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_rawRes="@raw/meli_loading"
+        app:lottie_loop="true"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

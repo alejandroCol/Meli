@@ -83,13 +83,13 @@ class HomeActivity : AppCompatActivity() {
 
     private fun handleNavigation(navigation: HomeNavigation) {
         when (navigation) {
-            is HomeNavigation.Detail -> openDetail(navigation.cityName)
+            is HomeNavigation.Detail -> openDetail(navigation.product)
         }
     }
 
-    private fun openDetail(city: String) {
+    private fun openDetail(product: Product) {
         val intent = Intent(this, ProductDetailActivity::class.java)
-        intent.putExtra(ARG_PRODUCT, city)
+        intent.putExtra(ARG_PRODUCT, product)
         startActivity(intent)
     }
 
@@ -134,9 +134,15 @@ class HomeActivity : AppCompatActivity() {
     private fun showLoading(show: Boolean) {
         binding.run {
             if (show) {
-                pbHome.show()
+                lavLoading.playAnimation()
+                lavLoading.show()
+                productsRecyclerview.hide()
                 layoutEmptySearch
-            } else pbHome.hide()
+            } else {
+                lavLoading.pauseAnimation()
+                lavLoading.hide()
+                productsRecyclerview.show()
+            }
         }
     }
 }

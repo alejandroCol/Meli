@@ -3,6 +3,7 @@ package alejo.meli.home.presentation.adapter
 import alejo.meli.databinding.ProductItemBinding
 import alejo.meli.home.domain.model.Product
 import alejo.meli.home.presentation.listener.ProductListener
+import alejo.meli.utils.loadImage
 import alejo.meli.utils.setSafeOnClickListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -31,8 +32,10 @@ class ProductAdapter(val listener: ProductListener) : RecyclerView.Adapter<Produ
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                product.also { (name) ->
-                    tvTitle.text = name
+                product.also {
+                    tvTitle.text = it.title
+                    tvPrice.text = "$"+it.price
+                    ivProduct.loadImage(it.thumbnail)
                 }
             }
             itemView.setSafeOnClickListener { listener.onProductClicked(product) }
