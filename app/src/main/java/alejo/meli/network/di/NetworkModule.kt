@@ -1,5 +1,9 @@
 package alejo.meli.network.di
 
+import alejo.meli.core.data.DomainErrorFactory
+import alejo.meli.home.data.datasource.remote.ProductRemoteDataSource
+import alejo.meli.home.data.repository.DefaultProductRepository
+import alejo.meli.network.Urls.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,9 +43,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): WeatherRemoteDataSource = retrofit.create(WeatherRemoteDataSource::class.java)
+    fun provideApiService(retrofit: Retrofit): ProductRemoteDataSource =
+        retrofit.create(ProductRemoteDataSource::class.java)
 
     @Singleton
     @Provides
-    fun providesRepository(apiService: WeatherRemoteDataSource, errorFactory: DomainErrorFactory) = DefaultWeatherRepository(apiService, errorFactory)
+    fun providesRepository(apiService: ProductRemoteDataSource, errorFactory: DomainErrorFactory) =
+        DefaultProductRepository(apiService, errorFactory)
 }

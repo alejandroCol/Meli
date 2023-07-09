@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Meli</string>
+    <string name="retry">Retry</string>
+    <string name="search_hint">Search a product…</string>
+    <string name="empty_message">Try again with another search</string>
+    <string name="error_connection">Sorry, we have a problem connection</string>
 </resources>
