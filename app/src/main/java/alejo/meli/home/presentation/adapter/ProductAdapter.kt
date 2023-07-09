@@ -5,12 +5,13 @@ import alejo.meli.home.domain.model.Product
 import alejo.meli.home.presentation.listener.ProductListener
 import alejo.meli.utils.loadImage
 import alejo.meli.utils.setSafeOnClickListener
+import alejo.meli.utils.show
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-
-class ProductAdapter(val listener: ProductListener) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(val listener: ProductListener) :
+    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     var products: List<Product> = emptyList()
 
@@ -34,7 +35,8 @@ class ProductAdapter(val listener: ProductListener) : RecyclerView.Adapter<Produ
             binding.apply {
                 product.also {
                     tvTitle.text = it.title
-                    tvPrice.text = "$"+it.price
+                    tvShipping.show(it.shipping.freeShipping)
+                    tvPrice.text = "$" + it.price
                     ivProduct.loadImage(it.thumbnail)
                 }
             }

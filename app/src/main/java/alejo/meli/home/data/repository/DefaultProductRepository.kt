@@ -10,7 +10,7 @@ import alejo.meli.utils.Singleton
 
 class DefaultProductRepository(
     private val remoteDataSource: ProductRemoteDataSource,
-    private val errorFactory: DomainErrorFactory,
+    private val errorFactory: DomainErrorFactory
 ) : ProductRepository {
 
     override suspend fun getSearchedProducts(search: String): List<Product> {
@@ -24,7 +24,7 @@ class DefaultProductRepository(
         @JvmStatic
         fun getInstance(
             remoteDataSource: ProductRemoteDataSource,
-            errorFactory: DomainErrorFactory,
+            errorFactory: DomainErrorFactory
         ) = get {
             DefaultProductRepository(remoteDataSource, errorFactory)
         }

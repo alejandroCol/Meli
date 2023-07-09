@@ -5,5 +5,6 @@ import java.io.Serializable
 data class Product(
     val title: String,
     val thumbnail: String,
-    val price: String
+    val price: String,
+    val shipping: Shipping
 ) : Serializable

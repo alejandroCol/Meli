@@ -6,11 +6,10 @@ import alejo.meli.home.presentation.search.HomeViewModel.Companion.ARG_PRODUCT
 import alejo.meli.utils.hide
 import alejo.meli.utils.loadImage
 import alejo.meli.utils.show
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class ProductDetailActivity : AppCompatActivity() {
@@ -28,7 +27,8 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private fun getExtras() {
         intent.extras?.let {
-            it.getSerializable(ARG_PRODUCT)?.let { product -> viewModel.showDetail(product as Product) }
+            it.getSerializable(ARG_PRODUCT)
+                ?.let { product -> viewModel.showDetail(product as Product) }
         }
     }
 
@@ -62,7 +62,7 @@ class ProductDetailActivity : AppCompatActivity() {
             showLoading(false)
             tvTitle.text = detailProduct.title
             ivProduct.loadImage(detailProduct.thumbnail)
-            tvPrice.text = "$"+detailProduct.price
+            tvPrice.text = "$" + detailProduct.price
         }
     }
 }

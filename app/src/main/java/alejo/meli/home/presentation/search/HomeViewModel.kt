@@ -4,10 +4,11 @@ import alejo.meli.core.presentation.BaseViewModel
 import alejo.meli.home.domain.model.Product
 import alejo.meli.home.domain.usecase.GetProductsSearchedUseCase
 import alejo.meli.home.presentation.listener.ProductListener
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,13 +16,17 @@ class HomeViewModel @Inject constructor(
     private val getProductsSearched: GetProductsSearchedUseCase
 ) : BaseViewModel<HomeViewState, HomeNavigation>(), ProductListener {
 
+    private val _lastSearch = MutableLiveData<String>()
+    val lastSearch: LiveData<String> get() = _lastSearch
+
     fun searchProducts(search: String) {
         setState(HomeViewState.Loading)
         viewModelScope.launch {
             try {
                 val products = getProductsSearched(search)
+                _lastSearch.value = search
                 handleProductsResponse(products)
-            } catch (throwable: IOException) {
+            } catch (throwable: Throwable) {
                 setState(HomeViewState.Error)
             }
         }
@@ -35,10 +40,6 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun setEmpty() {
-        setState(HomeViewState.Empty)
-    }
-
-    fun cleanSearch() {
         setState(HomeViewState.Empty)
     }
 

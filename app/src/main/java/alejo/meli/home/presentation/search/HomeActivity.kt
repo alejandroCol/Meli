@@ -12,9 +12,9 @@ import alejo.meli.utils.hide
 import alejo.meli.utils.show
 import alejo.meli.utils.showKeyboard
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,12 +53,9 @@ class HomeActivity : AppCompatActivity() {
                 DebouncingQueryTextListener(
                     this@HomeActivity.lifecycle
                 ) { newText ->
-                    newText?.let {
-                        if (it.isEmpty()) {
-                            viewModel.cleanSearch()
-                        } else {
-                            viewModel.searchProducts(it)
-                        }
+                    val searchQuery = newText?.takeIf { it.isNotEmpty() }
+                    if (searchQuery != viewModel.lastSearch.value) {
+                        viewModel.searchProducts(searchQuery ?: "")
                     }
                 }
             )
@@ -137,7 +134,7 @@ class HomeActivity : AppCompatActivity() {
                 lavLoading.playAnimation()
                 lavLoading.show()
                 productsRecyclerview.hide()
-                layoutEmptySearch
+                layoutEmptySearch.hide()
             } else {
                 lavLoading.pauseAnimation()
                 lavLoading.hide()
