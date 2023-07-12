@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetProductsSearchedUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ) {
-    suspend operator fun invoke(search: String): List<Product>? {
+    suspend operator fun invoke(search: String): List<Product> {
         return withContext(Dispatchers.IO) {
             productRepository.getSearchedProducts(search)
         }

@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupList() {
-        binding.productsRecyclerview.apply {
+        binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
             setHasFixedSize(true)
             adapter = ProductAdapter(viewModel)
@@ -110,7 +110,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showEmpty() {
         showLoading(false)
-        binding.productsRecyclerview.hide()
+        binding.rvProducts.hide()
         binding.layoutEmptySearch.show()
     }
 
@@ -118,8 +118,8 @@ class HomeActivity : AppCompatActivity() {
         showLoading(false)
         binding.run {
             layoutEmptySearch.hide()
-            productsRecyclerview.show()
-            productsRecyclerview.apply {
+            rvProducts.show()
+            rvProducts.apply {
                 with(adapter as ProductAdapter) {
                     products = productList
                     notifyDataSetChanged()
@@ -133,12 +133,12 @@ class HomeActivity : AppCompatActivity() {
             if (show) {
                 lavLoading.playAnimation()
                 lavLoading.show()
-                productsRecyclerview.hide()
+                rvProducts.hide()
                 layoutEmptySearch.hide()
             } else {
                 lavLoading.pauseAnimation()
                 lavLoading.hide()
-                productsRecyclerview.show()
+                rvProducts.show()
             }
         }
     }

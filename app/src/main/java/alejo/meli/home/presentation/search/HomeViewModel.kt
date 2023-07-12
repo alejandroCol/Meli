@@ -27,6 +27,7 @@ class HomeViewModel @Inject constructor(
                 _lastSearch.value = search
                 handleProductsResponse(products)
             } catch (throwable: Throwable) {
+                throwable.printStackTrace()
                 setState(HomeViewState.Error)
             }
         }

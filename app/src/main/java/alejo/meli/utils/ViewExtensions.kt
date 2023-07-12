@@ -6,7 +6,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
 
 fun View.setSafeOnClickListener(onSafeClick: View.OnClickListener) {
     setOnClickListener(SafeClickListener(onSafeClick = onSafeClick))
@@ -29,13 +28,7 @@ fun View.showKeyboard() {
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
 }
 
-fun String.getDateFormatted(): String {
-    val parser = SimpleDateFormat("yyyy-MM-dd")
-    val formatter = SimpleDateFormat("dd.MMM")
-    return formatter.format(parser.parse(this))
-}
-
-fun ImageView.loadImage(url: String) {
+fun ImageView.loadImage(url: String?) {
     Picasso.get()
         .load(url)
         .into(this)

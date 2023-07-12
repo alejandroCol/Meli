@@ -5,4 +5,8 @@
     <string name="empty_message">Intenta con otra busqueda</string>
     <string name="free_shipping">Envío gratis</string>
     <string name="error_connection">Lo sentimos, tenemos un problema con la conexión</string>
+    <string name="main_characteristics">Características principales</string>
+    <string name="condition_new">Nuevo</string>
+    <string name="condition_used">Usado</string>
+    <string name="seller_by">Vendido por:</string>
 </resources>

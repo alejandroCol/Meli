@@ -9,18 +9,17 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 class HomeModule {
 
     @Provides
-    fun provideWeatherRepository(
-        weatherRemoteDataSource: ProductRemoteDataSource,
+    fun provideProductRepository(
+        productRemoteDataSource: ProductRemoteDataSource,
         domainErrorFactory: DomainErrorFactory
     ): ProductRepository =
         DefaultProductRepository.getInstance(
-            weatherRemoteDataSource,
+            productRemoteDataSource,
             domainErrorFactory
         )
 

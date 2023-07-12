@@ -2,13 +2,15 @@ package alejo.meli.home.presentation.detail
 
 import alejo.meli.databinding.ActivityProductDetailBinding
 import alejo.meli.home.domain.model.Product
+import alejo.meli.home.presentation.adapter.AttributeAdapter
 import alejo.meli.home.presentation.search.HomeViewModel.Companion.ARG_PRODUCT
 import alejo.meli.utils.hide
-import alejo.meli.utils.loadImage
 import alejo.meli.utils.show
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +24,7 @@ class ProductDetailActivity : AppCompatActivity() {
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         observeStates()
+        setupList()
         getExtras()
     }
 
@@ -29,6 +32,15 @@ class ProductDetailActivity : AppCompatActivity() {
         intent.extras?.let {
             it.getSerializable(ARG_PRODUCT)
                 ?.let { product -> viewModel.showDetail(product as Product) }
+        }
+    }
+
+    private fun setupList() {
+        binding.rvDetail.apply {
+            layoutManager = LinearLayoutManager(this@ProductDetailActivity)
+            setHasFixedSize(true)
+            adapter = AttributeAdapter()
+            addItemDecoration(DividerItemDecoration(context, 0))
         }
     }
 
@@ -47,22 +59,27 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.run {
             if (show) {
                 pbDetail.show()
-                clProductDetail.hide()
             } else {
                 pbDetail.hide()
-                clProductDetail.show()
             }
         }
     }
 
     private fun showContent(
-        detailProduct: Product
+        product: Product
     ) {
         binding.run {
             showLoading(false)
-            tvTitle.text = detailProduct.title
-            ivProduct.loadImage(detailProduct.thumbnail)
-            tvPrice.text = "$" + detailProduct.price
+            rvDetail.show()
+            rvDetail.apply {
+                with(adapter as AttributeAdapter) {
+                    detailProduct = product
+                    product.attributes?.let {
+                        attributes = it
+                    }
+                    notifyDataSetChanged()
+                }
+            }
         }
     }
 }
